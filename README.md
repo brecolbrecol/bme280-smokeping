@@ -14,7 +14,7 @@ sudo chmod +x !$
 sudo usermod -a -G i2c smokeping
 ```
 ## Configuration
-
+```
 --- a/smokeping/config.d/Probes
 +++ b/smokeping/config.d/Probes
 @@ -4,3 +4,10 @@
