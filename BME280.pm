@@ -108,7 +108,6 @@ sub pingone ($){
     # my $weight = $target->{vars}{weight}
     my $cmd = '/usr/bin/bme280-smoke.py';
     my $count = 14;
-    my $wait = 4;
     $count = $self->pings($target) if defined $target; # the number of pings for this targets
     $self->increment_rounds_count;
 
@@ -123,10 +122,9 @@ sub pingone ($){
     for (1..$count) {
             my $pid = open(P, "$cmd 2>&1 |") or croak("fork: $!");
             while (<P>) {
-                    /Temperature \(C\): (\d+\.\d+)/ and push @times, $1;
+                    /Temperature \(C\): (\d+\.\d+)/ and push @times, $1 * 10;
             }
 	    waitpid $pid,0;
-	    sleep($wait);
             close P;
     }
 
