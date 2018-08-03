@@ -10,7 +10,7 @@ bme280.pm uses [bme280.py](https://bitbucket.org/MattHawkinsUK/rpispy-misc/raw/m
 ```bash
 sudo cp -v bme280-smoke.py /usr/bin/bme280-smoke.py
 sudo chmod +x !$
-<<<<<<< HEAD
+# grant i2c access to smokeping user
 sudo usermod -a -G i2c smokeping
 
 ## Configuration
@@ -45,6 +45,4 @@ sudo usermod -a -G i2c smokeping
 +probe = BME280
 +temperature = 1
 +host = localhost
-=======
->>>>>>> 8c0fa4da949fd2ae1b1ae5eccec4caa18f0c8d1e
 ```
