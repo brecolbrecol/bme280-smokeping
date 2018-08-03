@@ -20,6 +20,7 @@ use base qw(Smokeping::probes::basefork);
 #use base qw(Smokeping::probes::base);
 use Carp;
 
+
 sub pod_hash {
 	return {
 		name => <<DOC,
@@ -106,7 +107,8 @@ sub pingone ($){
 #    my $binary = $self->{properties}{binary};
     # my $weight = $target->{vars}{weight}
     my $cmd = '/usr/bin/bme280-smoke.py';
-    my $count = 5;
+    my $count = 14;
+    my $wait = 4;
     $count = $self->pings($target) if defined $target; # the number of pings for this targets
     $self->increment_rounds_count;
 
@@ -124,6 +126,7 @@ sub pingone ($){
                     /Temperature \(C\): (\d+\.\d+)/ and push @times, $1;
             }
 	    waitpid $pid,0;
+	    sleep($wait);
             close P;
     }
 
