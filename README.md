@@ -12,9 +12,9 @@ sudo cp -v bme280-smoke.py /usr/bin/bme280-smoke.py
 sudo chmod +x !$
 # grant i2c access to smokeping user
 sudo usermod -a -G i2c smokeping
-
-## Configuration
 ```
+## Configuration
+
 --- a/smokeping/config.d/Probes
 +++ b/smokeping/config.d/Probes
 @@ -4,3 +4,10 @@
