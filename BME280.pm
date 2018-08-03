@@ -46,14 +46,9 @@ sub new($$$)
 
     # no need for this if we run as a cgi
     unless ( $ENV{SERVER_SOFTWARE} ) {
-	    my @measures = ping();
-
-	    foreach my $measure (@measures)
-	    {
-		    print $measure . "\n";
-	    }
-
+	    print "BME temperature probe\n";
     };
+
 
     return $self;
 }
@@ -113,7 +108,7 @@ sub ping ($){
     my $cmd = '/usr/bin/bme280-smoke.py';
     my $count = 5;
     $count = $self->pings($target) if defined $target; # the number of pings for this targets
-#    $self->increment_rounds_count;
+    $self->increment_rounds_count;
 
     # ping one target
 
