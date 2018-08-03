@@ -1,7 +1,7 @@
 # bme280-smokeping
 Smokeping's probe for reading bme280 temperature data
 
-Based on /usr/share/perl5/Smokeping/probes/skel.pm , Smokeping::probes::base
+Based on /usr/share/perl5/Smokeping/probes/skel.pm , Smokeping::probes::basefork
 
 ## Reading data
 bme280.pm uses [bme280.py](https://bitbucket.org/MattHawkinsUK/rpispy-misc/raw/master/python/bme280.py)

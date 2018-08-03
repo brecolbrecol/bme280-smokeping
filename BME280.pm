@@ -15,9 +15,9 @@ to generate the POD document.
 =cut
 
 use strict;
-#use base qw(Smokeping::probes::basefork); 
+use base qw(Smokeping::probes::basefork); 
 # or, alternatively
-use base qw(Smokeping::probes::base);
+#use base qw(Smokeping::probes::base);
 use Carp;
 
 sub pod_hash {
@@ -99,7 +99,7 @@ sub ProbeDesc($){
 # you'd have to provide a "ping" method instead
 # of "pingone"
 
-sub ping ($){
+sub pingone ($){
     my $self = shift;
     my $target = shift;
 
@@ -119,10 +119,11 @@ sub ping ($){
     my @times;
 
     for (1..$count) {
-            open(P, "$cmd 2>&1 |") or croak("fork: $!");
+            my $pid = open(P, "$cmd 2>&1 |") or croak("fork: $!");
             while (<P>) {
                     /Temperature \(C\): (\d+\.\d+)/ and push @times, $1;
             }
+	    waitpid $pid,0;
             close P;
     }
 
